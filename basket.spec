@@ -8,39 +8,45 @@ License:	GPL
 Group:		Applications
 Source0:	http://slaout.linux62.org/basket/downloads/%{name}-%{version}-%{_beta}.tar.gz
 # Source0-md5:	b5d4a91948b08090b0c9691973cd0204
-URL:		http://basket.kde.org
+URL:		http://basket.kde.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	kdelibs-devel >= 9:3.2.0
 BuildRequires:	rpmbuild(macros) >= 1.129
-BuildRequires:	unsermake >= 040805
 BuildRequires:	sed >= 4.0
+BuildRequires:	unsermake >= 040805
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 This application provide as many baskets (drawers) as you wish, and
 you can drag and drop various objects (text, URLs, images, sounds...)
 into its. Objects can be edited, copied, dragged... So, you can
-arrange them as you want ! This application can be used to quickly
+arrange them as you want! This application can be used to quickly
 drop web objects (link, text, images...) or notes (texts or images
 and, later, sound), as well as free your clutered desktop (if any).
 
-#description -l pl
-
+%description -l pl
+Ta aplikacja udostêpnia dowoln± liczbê koszyków (szuflad) i pozwala
+przeci±gaæ i upuszczaæ na nie ró¿ne obiekty (tekst, URL-e, obrazki,
+d¼wiêki...). Obiekty mog± byæ modyfikowane, kopiowane, przeci±gane...
+Mo¿na je uk³adaæ jak tylko chcemy. Ta aplikacja mo¿e byæ u¿ywana do
+szybkiego upuszczania obiektów WWW (odno¶ników, tekstu, obrazków...)
+lub notatek (tekstów albo obrazków, pó¼niej d¼wiêków), a tak¿e
+uwalniania pulpitu ze ¶mieci.
 
 %prep
 %setup -q -n %{name}-%{version}-%{_beta}
 %{__sed} -i -e 's,\$(TOPSUBDIRS),doc po src,'  Makefile.am
 
 %build
-cp -f %{_datadir}/automake/config.sub admin
+cp -f /usr/share/automake/config.sub admin
 export UNSERMAKE=%{_datadir}/unsermake/unsermake
 %{__make} -f admin/Makefile.common cvs
 
 %configure \
-	%if "%{_lib}" == "lib64"
+%if "%{_lib}" == "lib64"
 	--enable-libsuffix=64 \
-	%endif
+%endif
 	--%{?debug:en}%{!?debug:dis}able-debug%{?debug:=full} \
 	--with-qt-libraries=%{_libdir}
 %{__make}
@@ -53,10 +59,11 @@ install -d $RPM_BUILD_ROOT%{_desktopdir}
 	kde_htmldir=%{_kdedocdir} \
 	kde_libs_htmldir=%{_kdedocdir}
 
-%find_lang basket	--with-kde
 install -d $RPM_BUILD_ROOT%{_desktopdir}
 mv $RPM_BUILD_ROOT{%{_datadir}/applnk/Utilities/basket.desktop,%{_desktopdir}}
-echo "Categories:Qt;KDE;Utility;" >> $RPM_BUILD_ROOT%{_desktopdir}/basket.desktop
+echo "Categories=Qt;KDE;Utility;" >> $RPM_BUILD_ROOT%{_desktopdir}/basket.desktop
+
+%find_lang basket --with-kde
 
 %clean
 rm -rf $RPM_BUILD_ROOT
