@@ -40,7 +40,7 @@ uwalniania pulpitu ze ¶mieci.
 
 %build
 cp -f /usr/share/automake/config.sub admin
-export UNSERMAKE=%{_datadir}/unsermake/unsermake
+export UNSERMAKE=/usr/share/unsermake/unsermake
 %{__make} -f admin/Makefile.common cvs
 
 %configure \
