@@ -1,13 +1,13 @@
-%define		_beta	beta2
 Summary:	A container for various types of data
 Summary(pl):	Pojemnik na ró¿ne rodzaje danych
 Name:		basket
 Version:	0.5.0
-Release:	0.%{_beta}.1
+Release:	1
 License:	GPL
 Group:		Applications
-Source0:	http://slaout.linux62.org/basket/downloads/%{name}-%{version}-%{_beta}.tar.gz
-# Source0-md5:	b5d4a91948b08090b0c9691973cd0204
+# from	http://basket.kde.org/downloads/?file=%{name}-%{version}.tar.gz
+Source0:	http://team.pld-linux.org/~djurban/%{name}-%{version}.tar.gz
+# Source0-md5:	1495261da3dbfc243a8340cd9c5723c2
 URL:		http://basket.kde.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -35,7 +35,7 @@ lub notatek (tekstów albo obrazków, pó¼niej d¼wiêków), a tak¿e
 uwalniania pulpitu ze ¶mieci.
 
 %prep
-%setup -q -n %{name}-%{version}-%{_beta}
+%setup -q -n %{name}-%{version}
 %{__sed} -i -e 's,\$(TOPSUBDIRS),doc po src,'  Makefile.am
 
 %build
