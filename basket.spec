@@ -35,7 +35,7 @@ lub notatek (tekstów albo obrazków, pó¼niej d¼wiêków), a tak¿e
 uwalniania pulpitu ze ¶mieci.
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q
 %{__sed} -i -e 's,\$(TOPSUBDIRS),doc po src,'  Makefile.am
 
 %build
