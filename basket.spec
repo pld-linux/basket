@@ -1,13 +1,16 @@
+%define		_alpha	Alpha1
+%define		_alpha_m	C
+%define		_alpha_f	%{_alpha}%{_alpha_m}
 Summary:	A container for various types of data
 Summary(pl):	Pojemnik na ró¿ne rodzaje danych
 Name:		basket
-Version:	0.5.0
-Release:	1
+Version:	0.6.0
+Release:	0.%{_alpha_f}.1
 License:	GPL
 Group:		Applications
 # from	http://basket.kde.org/downloads/?file=%{name}-%{version}.tar.gz
-Source0:	http://team.pld-linux.org/~djurban/%{name}-%{version}.tar.gz
-# Source0-md5:	1495261da3dbfc243a8340cd9c5723c2
+Source0:	http://team.pld-linux.org/~djurban/kde/%{name}-%{version}%{_alpha_f}.tar.gz
+# Source0-md5:	6cda67414de6bc3757a591225ee80c2a
 URL:		http://basket.kde.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -35,12 +38,12 @@ lub notatek (tekstów albo obrazków, pó¼niej d¼wiêków), a tak¿e
 uwalniania pulpitu ze ¶mieci.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{version}%{_alpha}
 %{__sed} -i -e 's,\$(TOPSUBDIRS),doc po src,'  Makefile.am
 
 %build
 cp -f /usr/share/automake/config.sub admin
-export UNSERMAKE=/usr/share/unsermake/unsermake
+#export UNSERMAKE=/usr/share/unsermake/unsermake
 %{__make} -f admin/Makefile.common cvs
 
 %configure \
