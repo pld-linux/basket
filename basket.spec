@@ -1,5 +1,5 @@
-%define		_alpha	Alpha1
-%define		_alpha_m	C
+%define		_alpha	Alpha2
+%define		_alpha_m	%{nil}
 %define		_alpha_f	%{_alpha}%{_alpha_m}
 Summary:	A container for various types of data
 Summary(pl):	Pojemnik na ró¿ne rodzaje danych
@@ -9,8 +9,8 @@ Release:	0.%{_alpha_f}.1
 License:	GPL
 Group:		Applications
 # from	http://basket.kde.org/downloads/?file=%{name}-%{version}.tar.gz
-Source0:	http://team.pld-linux.org/~djurban/kde/%{name}-%{version}%{_alpha_f}.tar.gz
-# Source0-md5:	6cda67414de6bc3757a591225ee80c2a
+Source0:	http://basket.kde.org/downloads/%{name}-%{version}%{_alpha_f}.tar.gz
+# Source0-md5:	671143e28ee2d1cbc0b76960810297ae
 URL:		http://basket.kde.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
