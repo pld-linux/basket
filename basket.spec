@@ -1,4 +1,4 @@
-%define		_alpha	Alpha2
+%define		_alpha	Beta2
 %define		_alpha_m	%{nil}
 %define		_alpha_f	%{_alpha}%{_alpha_m}
 Summary:	A container for various types of data
@@ -10,23 +10,24 @@ License:	GPL
 Group:		Applications
 # from	http://basket.kde.org/downloads/?file=%{name}-%{version}.tar.gz
 Source0:	http://basket.kde.org/downloads/%{name}-%{version}%{_alpha_f}.tar.gz
-# Source0-md5:	671143e28ee2d1cbc0b76960810297ae
+# Source0-md5:	424a0ca635ca831baeb73a81352356bf
 URL:		http://basket.kde.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	gpgme-devel
 BuildRequires:	kdelibs-devel >= 9:3.2.0
 BuildRequires:	rpmbuild(macros) >= 1.129
 BuildRequires:	sed >= 4.0
-BuildRequires:	unsermake >= 040805
+#BuildRequires:	unsermake >= 040805
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 This application provide as many baskets (drawers) as you wish, and
 you can drag and drop various objects (text, URLs, images, sounds...)
 into its. Objects can be edited, copied, dragged... So, you can
-arrange them as you want! This application can be used to quickly
-drop web objects (link, text, images...) or notes (texts or images
-and, later, sound), as well as free your clutered desktop (if any).
+arrange them as you want! This application can be used to quickly drop
+web objects (link, text, images...) or notes (texts or images and,
+later, sound), as well as free your clutered desktop (if any).
 
 %description -l pl
 Ta aplikacja udostêpnia dowoln± liczbê koszyków (szuflad) i pozwala
@@ -66,15 +67,26 @@ install -d $RPM_BUILD_ROOT%{_desktopdir}
 mv $RPM_BUILD_ROOT{%{_datadir}/applnk/Utilities/basket.desktop,%{_desktopdir}}
 echo "Categories=Qt;KDE;Utility;" >> $RPM_BUILD_ROOT%{_desktopdir}/basket.desktop
 
-%find_lang basket --with-kde
+%find_lang %{name} --with-kde
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files -f basket.lang
+%files -f %{name}.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/*
-%{_desktopdir}/*.desktop
+%attr(755,root,root) %{_libdir}/libbasketcommon.so
+%attr(755,root,root) %{_libdir}/kde3/kcm_basket.so
+%attr(755,root,root) %{_libdir}/kde3/libbasketpart.so
+%{_libdir}/kde3/libbasketpart.la
+%{_libdir}/kde3/kcm_basket.la
+%{_libdir}/libbasketcommon.la
 %{_datadir}/apps/basket
+%{_datadir}/services/basket_config_apps.desktop
+%{_datadir}/services/basket_config_features.desktop
+%{_datadir}/services/basket_config_general.desktop
+%{_datadir}/services/basket_config_notes.desktop
+%{_datadir}/services/basket_part.desktop
 %{_iconsdir}/crystalsvg/*x*/*/*.png
 %{_iconsdir}/crystalsvg/scalable/apps/*.svg
+%{_desktopdir}/*.desktop
