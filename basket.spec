@@ -2,7 +2,7 @@
 %define		_alpha_m	%{nil}
 %define		_alpha_f	%{_alpha}%{_alpha_m}
 Summary:	A container for various types of data
-Summary(pl.UTF-8):   Pojemnik na różne rodzaje danych
+Summary(pl.UTF-8):	Pojemnik na różne rodzaje danych
 Name:		basket
 Version:	0.6.0
 Release:	0.%{_alpha_f}.1
