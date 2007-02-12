@@ -2,7 +2,7 @@
 %define		_alpha_m	%{nil}
 %define		_alpha_f	%{_alpha}%{_alpha_m}
 Summary:	A container for various types of data
-Summary(pl):	Pojemnik na ró¿ne rodzaje danych
+Summary(pl.UTF-8):   Pojemnik na rÃ³Å¼ne rodzaje danych
 Name:		basket
 Version:	0.6.0
 Release:	0.%{_alpha_f}.1
@@ -29,14 +29,14 @@ arrange them as you want! This application can be used to quickly drop
 web objects (link, text, images...) or notes (texts or images and,
 later, sound), as well as free your clutered desktop (if any).
 
-%description -l pl
-Ta aplikacja udostêpnia dowoln± liczbê koszyków (szuflad) i pozwala
-przeci±gaæ i upuszczaæ na nie ró¿ne obiekty (tekst, URL-e, obrazki,
-d¼wiêki...). Obiekty mog± byæ modyfikowane, kopiowane, przeci±gane...
-Mo¿na je uk³adaæ jak tylko chcemy. Ta aplikacja mo¿e byæ u¿ywana do
-szybkiego upuszczania obiektów WWW (odno¶ników, tekstu, obrazków...)
-lub notatek (tekstów albo obrazków, pó¼niej d¼wiêków), a tak¿e
-uwalniania pulpitu ze ¶mieci.
+%description -l pl.UTF-8
+Ta aplikacja udostÄ™pnia dowolnÄ… liczbÄ™ koszykÃ³w (szuflad) i pozwala
+przeciÄ…gaÄ‡ i upuszczaÄ‡ na nie rÃ³Å¼ne obiekty (tekst, URL-e, obrazki,
+dÅºwiÄ™ki...). Obiekty mogÄ… byÄ‡ modyfikowane, kopiowane, przeciÄ…gane...
+MoÅ¼na je ukÅ‚adaÄ‡ jak tylko chcemy. Ta aplikacja moÅ¼e byÄ‡ uÅ¼ywana do
+szybkiego upuszczania obiektÃ³w WWW (odnoÅ›nikÃ³w, tekstu, obrazkÃ³w...)
+lub notatek (tekstÃ³w albo obrazkÃ³w, pÃ³Åºniej dÅºwiÄ™kÃ³w), a takÅ¼e
+uwalniania pulpitu ze Å›mieci.
 
 %prep
 %setup -q -n %{name}-%{version}%{_alpha}
