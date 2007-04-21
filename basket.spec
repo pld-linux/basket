@@ -1,21 +1,21 @@
-%define		_alpha	Beta2
-%define		_alpha_m	%{nil}
-%define		_alpha_f	%{_alpha}%{_alpha_m}
 Summary:	A container for various types of data
 Summary(pl.UTF-8):	Pojemnik na różne rodzaje danych
 Name:		basket
-Version:	0.6.0
-Release:	0.%{_alpha_f}.1
+Version:	1.0.2
+Release:	1
 License:	GPL
 Group:		Applications
 # from	http://basket.kde.org/downloads/?file=%{name}-%{version}.tar.gz
-Source0:	http://basket.kde.org/downloads/%{name}-%{version}%{_alpha_f}.tar.gz
-# Source0-md5:	424a0ca635ca831baeb73a81352356bf
+Source0:	http://basket.kde.org/downloads/%{name}-%{version}.tar.gz
+# Source0-md5:	d71c62a56de9cc32ba2633e63e99071f
+Patch0:		%{name}-am.patch
+Patch1:		kde-ac260-lt.patch
 URL:		http://basket.kde.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gpgme-devel
 BuildRequires:	kdelibs-devel >= 9:3.2.0
+BuildRequires:	kdepim-devel
 BuildRequires:	rpmbuild(macros) >= 1.129
 BuildRequires:	sed >= 4.0
 #BuildRequires:	unsermake >= 040805
@@ -39,12 +39,13 @@ lub notatek (tekstów albo obrazków, później dźwięków), a także
 uwalniania pulpitu ze śmieci.
 
 %prep
-%setup -q -n %{name}-%{version}%{_alpha}
+%setup -q
+%patch0 -p1
+%patch1 -p1
 %{__sed} -i -e 's,\$(TOPSUBDIRS),doc po src,'  Makefile.am
 
 %build
-cp -f /usr/share/automake/config.sub admin
-#export UNSERMAKE=/usr/share/unsermake/unsermake
+cp -f /usr/share/automake/config.* admin
 %{__make} -f admin/Makefile.common cvs
 
 %configure \
@@ -83,9 +84,12 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libbasketcommon.la
 %{_datadir}/apps/basket
 %{_datadir}/services/basket_config_apps.desktop
+%{_datadir}/services/basket_config_baskets.desktop
 %{_datadir}/services/basket_config_features.desktop
 %{_datadir}/services/basket_config_general.desktop
 %{_datadir}/services/basket_config_notes.desktop
+%{_datadir}/services/basket_config_new_notes.desktop
+%{_datadir}/services/basket_config_notes_appearance.desktop
 %{_datadir}/services/basket_part.desktop
 %{_iconsdir}/crystalsvg/*x*/*/*.png
 %{_iconsdir}/crystalsvg/scalable/apps/*.svg

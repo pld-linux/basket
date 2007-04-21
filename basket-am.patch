@@ -1,0 +1,11 @@
+--- basket-1.0.2/admin/cvs.sh.orig	2007-04-21 10:10:51.000000000 +0200
++++ basket-1.0.2/admin/cvs.sh	2007-04-21 10:11:12.000000000 +0200
+@@ -68,7 +68,7 @@
+     echo "*** KDE requires automake $required_automake_version"
+     exit 1
+     ;;
+-  automake*1.6.* | automake*1.7* | automake*1.8* | automake*1.9*)
++  automake*1.6.* | automake*1.7* | automake*1.8* | automake*1.9* | automake*1.10* )
+     echo "*** $AUTOMAKE_STRING found."
+     UNSERMAKE=no
+     ;;
