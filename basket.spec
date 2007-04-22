@@ -2,7 +2,7 @@ Summary:	A container for various types of data
 Summary(pl.UTF-8):	Pojemnik na różne rodzaje danych
 Name:		basket
 Version:	1.0.2
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications
 # from	http://basket.kde.org/downloads/?file=%{name}-%{version}.tar.gz
@@ -67,6 +67,8 @@ install -d $RPM_BUILD_ROOT%{_desktopdir}
 install -d $RPM_BUILD_ROOT%{_desktopdir}
 mv $RPM_BUILD_ROOT{%{_datadir}/applnk/Utilities/basket.desktop,%{_desktopdir}}
 echo "Categories=Qt;KDE;Utility;" >> $RPM_BUILD_ROOT%{_desktopdir}/basket.desktop
+
+mv $RPM_BUILD_ROOT%{_datadir}/locale/pl_PL $RPM_BUILD_ROOT%{_datadir}/locale/pl
 
 %find_lang %{name} --with-kde
 
