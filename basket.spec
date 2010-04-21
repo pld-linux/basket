@@ -2,7 +2,7 @@ Summary:	A container for various types of data
 Summary(pl.UTF-8):	Pojemnik na różne rodzaje danych
 Name:		basket
 Version:	1.0.2
-Release:	2
+Release:	3
 License:	GPL
 Group:		Applications
 # from	http://basket.kde.org/downloads/?file=%{name}-%{version}.tar.gz
